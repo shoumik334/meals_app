@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:meals_app/models/meal.dart';
-import 'package:meals_app/screens/categories.dart';
 
 class MealsScreen extends StatelessWidget {
   const MealsScreen({super.key, required this.title, required this.meals});
@@ -17,9 +16,25 @@ class MealsScreen extends StatelessWidget {
       body:
           meals.isEmpty
               ? Center(
-                child: Text(
-                  'No meals Available for this category',
-                  style: Theme.of(context).textTheme.titleLarge!.copyWith(),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      'No meals Available for this category',
+                      style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                        color: Theme.of(context).colorScheme.onSurface,
+                      ),
+                    ),
+
+                    const SizedBox(height: 16),
+
+                    Text(
+                      'Try Searching a different Category',
+                      style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                        color: Theme.of(context).colorScheme.onSurfaceVariant,
+                      ),
+                    ),
+                  ],
                 ),
               )
               : ListView.builder(
@@ -30,9 +45,6 @@ class MealsScreen extends StatelessWidget {
                     title: Text(meal.title),
                     subtitle: Text('Duration: ${meal.duration} min'),
                     leading: Image.network(meal.imageUrl),
-                    onTap: () {
-                      MealsScreen(title: title, meals: meals);
-                    },
                   );
                 },
               ),
