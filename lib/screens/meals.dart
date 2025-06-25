@@ -41,10 +41,10 @@ class MealsScreen extends StatelessWidget {
               : ListView.builder(
                 itemCount: meals.length,
                 itemBuilder: (ctx, index) {
-                  final meal = meals[index];
+                 // final meal = meals[index];
                   return ListTile(
                     title: MealItem(meal: meals[index]),
-                    subtitle: Text('Duration: ${meal.duration} min'),
+                   //subtitle: Text('Duration: ${meal.duration} min'),
                     //leading: Image.network(meal.imageUrl),
                   );
                 },
